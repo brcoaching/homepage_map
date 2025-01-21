@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interaktive Karte</title>
+    <title>Gameplan for Leaders Tour 2025</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-Iu3jtQuInyC4aG0xNfTA5AphA+E3owEEd58DcRdxkvs9xhSgrDjVtOScRJo1eR1J" crossorigin=""/>
     <style>
         #map {
-            height: 600px;
+            height: 100vh;
             width: 100%;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-    <h1>Gameplan for Leaders Tour 2025</h1>
     <div id="map"></div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-IuKpQaEYbRV/j1enrGpYqz9omZkTe57ZMKj+m3TGV6P4Cpi7Rk6Ukt9LkWr1HQ+3" crossorigin=""></script>
     <script>
-        // Karte initialisieren
+        // Initialize the map
         var map = L.map('map').setView([20, 10], 2);
 
-        // OpenStreetMap Tiles hinzufügen
+        // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Daten für die Städte
+        // Add city markers with data
         var cities = [
             { name: "München", coords: [48.1351, 11.5820], date: "13.01. - 16.01.2025" },
             { name: "Berlin", coords: [52.5200, 13.4050], date: "20.03. - 23.03.2025" },
@@ -40,7 +43,7 @@
             { name: "Zürich", coords: [47.3769, 8.5417], date: "16.07. - 19.07.2025" }
         ];
 
-        // Marker für jede Stadt hinzufügen
+        // Add markers to the map
         cities.forEach(city => {
             L.marker(city.coords)
                 .addTo(map)
